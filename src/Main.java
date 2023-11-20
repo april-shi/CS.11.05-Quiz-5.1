@@ -1,5 +1,13 @@
 public class Main {
 
+    public static void main(String[] args) {
+
+        System.out.println(countCapitalLetters("HeLLo"));
+        System.out.println(countCapitalLetters("THERE"));
+        System.out.println(countCapitalLetters(""));
+        System.out.println(countCapitalLetters("0.3LOL"));
+
+    }
     /**
      * Given two arrays of integers, write a method called combine that combines the two arrays into one larger array.
      * The method combine will return a new one dimensional array of integers.
@@ -9,7 +17,26 @@ public class Main {
      */
     public static int[] combine(int[] array1, int[] array2) {
 
-        return null;
+       //create a new array, the inside length to be the length of array1 and array2 combined
+        int[] combined = new int[array1.length + array2.length];
+        //a loop to iterate all of the elements in the arrays and add it to combined
+        int count = 0;
+        for (int item : array1) { //first loop = array1[0]
+
+            combined[count] = item;
+            count++;
+
+        }
+
+        for (int item : array2) {
+
+            combined[count] = item;
+            count++;
+
+
+        }
+        //return the combine
+        return combined;
 
     }
 
@@ -22,12 +49,25 @@ public class Main {
      */
     public static int[] zip(int[] array1, int[] array2) {
 
-        return null;
+        int[] combine = new int[array1.length + array2.length];
+
+        int count = 0;
+        for (int i = 0; i < array1.length; i++) {
+
+            combine[count] = array1[i];
+            count++;
+            combine[count] = array2[i];
+            count++;
+
+        }
+
+        return combine;
 
     }
 
     /**
-     * Given two arrays of integers of equal length, write a method called product that multiplies each element in the first array by the element at the corresponding index in the second array.
+     * Given two arrays of integers of equal length, write a method called product
+     * that multiplies each element in the first array by the element at the corresponding index in the second array.
      * The method product will return a new one dimensional array of integers.
      * int[] myArray1 = {1,3,5,7,9};
      * int[] myArray2 = {2,4,6,8,10};=
@@ -35,7 +75,15 @@ public class Main {
      */
     public static int[] product(int[] array1, int[] array2) {
 
-        return null;
+        int[] combine = new int[array1.length];
+
+        for (int i = 0; i < array1.length; i++) {
+
+            combine[i] = array1[i] * array2[i];
+
+        }
+
+        return combine;
 
     }
 
@@ -57,14 +105,58 @@ public class Main {
      */
     public static int[] capitalCount(String[] words) {
 
-        return null;
+       int[] checking = new int[words.length];
+
+       for (int i = 0; i < words.length; i++) {
+
+           checking[i] = countCapitalLetters(words[i]);
+
+       }
+
+       return checking;
 
     }
 
     public static int countCapitalLetters(String word) {
 
-        return 0;
+        int count = 0;
 
+        for (int i = 0; i < word.length(); i++) {
+
+
+            if (word.substring(i,i+1).equals(word.substring(i,i+1).toUpperCase())) {
+
+                if (isAlphabetic(word.charAt(i))) {
+
+                    count++;
+
+                }
+
+            }
+
+        }
+
+        return count;
+
+    }
+    
+    public static boolean isAlphabetic(char str) { //checking if the thing is a number
+        
+        char[] array = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        
+        for (char item : array) {
+            
+            if (str == item) {
+                
+                return true;
+
+            } 
+            
+        }
+        
+        return false;
+        
     }
 
 }
